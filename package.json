@@ -1,11 +1,14 @@
 {
+  "homepage": "https://sebastiancc27.github.io/Legendary-FrontEnd/",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -r https://github.com/sebastiancc27/Legendary-FrontEnd",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=./",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
