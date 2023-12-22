@@ -2,6 +2,8 @@ import {Button, TextField, Box} from "@mui/material";
 import axios from 'axios'
 import { useState } from 'react';
 import './Perfil.css'
+import { useNavigate } from 'react-router-dom'
+
 
 function MiPerfil() {
     //!FUNCIÓN DE PROCESAR FORMULARIO
@@ -13,6 +15,8 @@ function MiPerfil() {
 
     const[habilitaInput, setHabilitaInput]=useState(true);
     const correoUsuario=localStorage.getItem("Usuario");
+    const navigate = useNavigate();
+
 
     //!METODO PARA OBTENER LOS DATOS DEL USUARIO
     const datosUsuario=async()=>{
@@ -48,7 +52,8 @@ function MiPerfil() {
     }
     UsuarioData();
     const atrasBtn=()=>{
-        window.open("../Legendary.html","_self");
+        // window.open("../Legendary.html","_self");
+        navigate('/Index');
     }
 
     

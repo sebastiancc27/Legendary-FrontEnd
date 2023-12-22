@@ -4,8 +4,11 @@ import axios from 'axios'
 import "./PantallaCoche.css"
 import CompraRealizada from "../Popups/CompraRealizada.jsx"
 import CompraNoRealizada from "../Popups/CompraNoRealizada.jsx"
+import { useNavigate } from 'react-router-dom'
+
 
 function PantallaCoche(props) {
+    const navigate = useNavigate();
     const nombre = window.localStorage.getItem("nombreCoche")
     const [cargando, setCargando] = useState(false);
     const [estadisticasCoche, setEstadisticasCoche] = useState(null);
@@ -34,7 +37,8 @@ function PantallaCoche(props) {
     }
 
     const atrasBtn = () => {
-        window.open("../Legendary.html", "_self");
+        // window.open("../Legendary.html", "_self");
+        navigate('/Index');
     }
 
     const obtenerEstaditicasCoche = async () => {

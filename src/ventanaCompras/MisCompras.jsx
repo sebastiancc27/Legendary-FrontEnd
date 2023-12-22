@@ -2,14 +2,17 @@ import { Button, ButtonBase } from "@mui/material";
 import React, { useState } from 'react';
 import axios from 'axios'
 import "./MisCompras.css"
+import { useNavigate } from 'react-router-dom'
+
 
 function MisCompras(props) {
     const nombreUsuario = window.localStorage.getItem("Usuario")
-
+    const navigate = useNavigate();
     const [comprasData, setCompras] = useState([]);
 
     const atrasBtn = () => {
-        window.open("../Legendary.html", "_self");
+        // window.open("../Legendary.html", "_self");
+        navigate('/Index');
     }
 
     const obtenerListaCompras = async () => {

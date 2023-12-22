@@ -3,9 +3,12 @@ import axios from 'axios'
 // import './Login.css'
 import './Legendary.css'
 import { useEffect, useState } from 'react';
-import PantallaCoche from '../Compra_Coche/PantallaCoche';
-function Legendary() {
+import { useNavigate } from 'react-router-dom'
 
+import PantallaCoche from '../Compra_Coche/PantallaCoche';
+
+function Legendary() {
+    const navigate = useNavigate();
     const [autosData, setAutosData] = useState([]);
     const [motocicletaData, setMotocicletaData] = useState([]);
 
@@ -47,15 +50,18 @@ function Legendary() {
 
     //!FUNCIÓN EJECUTADA AL DARLE CLICK EN BOTON DE CERRAR SESIÓN
     const cerrarSesion = () => {
-        window.open("../index.html", "_self");
+        // window.open("../index.html", "_self");
+        navigate('/Index');
     }
     //!FUNCIÓN PARA ABRIR VENTANA DEL PERFIL DEL USUARIO
     const miPerfil = () => {
-        window.open("../MiPerfil.html", "_self");
+        // window.open("../MiPerfil.html", "_self");
+        navigate('/Perfil');
     }
 
     const verCompras = () => {
-        window.open("../misCompras.html", "_self");
+        // window.open("../misCompras.html", "_self");
+        navigate('/MisCompras');
     }
 
     return (
@@ -106,147 +112,188 @@ function Legendary() {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Devestre Eight")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
                             })
                                 break;
                             case "Dewbauchee Vagner": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Dewbauchee Vagner")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Entity XF": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Entity XF")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Grotti Itali GTO": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Grotti Itali GTO")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Grotti Itali RSX": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Grotti Itali RSX")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Grotti X80 Proto": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Grotti X80 Proto")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Oceliot Pariah": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Oceliot Pariah")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Ocelot Virtue": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Ocelot Virtue")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Overflod Autarch": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Overflod Autarch")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Pegassi Torero XO": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Pegassi Torero XO")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Pegassi Zentorno": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Pegassi Zentorno")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Rapid FMJ": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Rapid FMJ")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "CarbonRS": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "CarbonRS")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Lectro": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Lectro")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Oppresor": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Oppresor")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Oppressor MK2": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Oppressor MK2")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Powersurge": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Powersurge")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Reever": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Reever")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Shinobi": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Shinobi")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Shotaro": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Shotaro")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                             case "Vindicator": container.addEventListener("click", (e) => {
                                 let precio = container.querySelector(".product_card_info_button").innerHTML
                                 window.localStorage.setItem("precioCoche", precio)
                                 window.localStorage.setItem("nombreCoche", "Vindicator")
-                                window.open("../PantallaCoches.html", "_self")
+                                // window.open("../PantallaCoches.html", "_self")
+                                navigate('/Coche');
+
                             })
                                 break;
                         }
