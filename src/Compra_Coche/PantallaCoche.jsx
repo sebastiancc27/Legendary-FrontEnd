@@ -39,7 +39,7 @@ function PantallaCoche(props) {
 
     const obtenerEstaditicasCoche = async () => {
         try {
-            const response = await axios.get("http://localhost:4567/obtenerImagenEstadisticas", { params: { nombreCoche: nombre } });
+            const response = await axios.get("https://legendarybackend-production.up.railway.app/obtenerImagenEstadisticas", { params: { nombreCoche: nombre } });
             setEstadisticasCoche(response.data);
         } catch (error) {
             console.error('Error al obtener la imagen del coche:', error);
@@ -48,7 +48,7 @@ function PantallaCoche(props) {
 
     const obtenerVisualizacionCoche = async () => {
         try {
-            const response = await axios.get("http://localhost:4567/obtenerImagenVisualizacion", { params: { nombreCoche: nombre } });
+            const response = await axios.get("https://legendarybackend-production.up.railway.app/obtenerImagenVisualizacion", { params: { nombreCoche: nombre } });
             setVisualizacionCoche(response.data);
         } catch (error) {
             console.error('Error al obtener la imagen del coche:', error);
@@ -57,7 +57,7 @@ function PantallaCoche(props) {
 
     const obtenerDescripcionCoche = async () => {
         try {
-            const response = await axios.get("http://localhost:4567/obtenerDescripcionCoche", { params: { nombreCoche: nombre } });
+            const response = await axios.get("https://legendarybackend-production.up.railway.app/obtenerDescripcionCoche", { params: { nombreCoche: nombre } });
             setDescripcionCoche(response.data);
         } catch (error) {
             console.error('Error al obtener la descripcion del coche:', error);
@@ -66,7 +66,7 @@ function PantallaCoche(props) {
 
     const hacerPeticion = async () => {
         try {
-            const respuesta = await axios.post("http://localhost:4567/realizarCompra", datosCoche);
+            const respuesta = await axios.post("https://legendarybackend-production.up.railway.app/realizarCompra", datosCoche);
             console.log(respuesta.data);
             return respuesta.data;
         } catch (error) {

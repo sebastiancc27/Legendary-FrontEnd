@@ -2,45 +2,22 @@ import {Button, TextField, Box} from "@mui/material";
 import axios from 'axios'
 import { useState } from 'react';
 import './Perfil.css'
-import DatosEditados from "../Popups/DatosEditados.jsx"
-import DatosNoEditados from "../Popups/DatosNoEditados.jsx"
 
 function MiPerfil() {
     //!FUNCIÓN DE PROCESAR FORMULARIO
     const [datosFormulario, setDatosFormulario]=useState({
         correo:window.localStorage.getItem("Usuario"),
         pais:'',
-        contrasena:''
+        contrasena:'',
     });
 
     const[habilitaInput, setHabilitaInput]=useState(true);
     const correoUsuario=localStorage.getItem("Usuario");
 
-    const [mostrarPopup, setMostrarPopup] = useState(false);
-    const abrirPopup = () => {
-        setMostrarPopup(true);
-    }
-
-
-    const [mostrarErrorPopup, setMostrarErrorPopup] = useState(false);
-    const abrirPopUpError = () => {
-        setMostrarErrorPopup(true);
-    }
-
-    //!FUNCIÓN PARA PROCESAR LOS DATOS DE ACTUALIZACIÓN
-    const peticionActualizar=async()=>{
-        try {
-            console.log("correo old: ",datosFormulario.correoOld);
-            const respuesta=axios.get("http://localhost:4567/actualizaDatos",{params:datosFormulario});
-            return respuesta;
-        } catch (error) {
-            console.log(error);
-        }
-    }
     //!METODO PARA OBTENER LOS DATOS DEL USUARIO
     const datosUsuario=async()=>{
         try {
-            const respuesta=await axios.get("http://localhost:4567/datosUsuario",{params:{correo: correoUsuario}});
+            const respuesta=await axios.get("https://legendarybackend-production.up.railway.app/datosUsuario",{params:{correo: correoUsuario}});
             return respuesta.data;
         } catch (error) {
         console.log(error);
@@ -49,17 +26,8 @@ function MiPerfil() {
     //!MÉTODO PARA HACER LA PETICIÓN PARA ELIMINAR AL USUARIO
     const peticionEliminar=async()=>{
         try {
-            const respuesta= await axios.get("http://localhost:4567/eliminarPerfil",{params:{correo:correoUsuario}});
+            const respuesta= await axios.get("https://legendarybackend-production.up.railway.app/eliminarPerfil",{params:{correo:correoUsuario}});
             return respuesta;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-//!FUNCIÓN PARA REALIZAR LA PETICIÓN PARA EL CAMBIO DE AVATAR
-    const actualizaAvatar=async(Avatar)=>{
-        try {
-            const respuesta=await axios.get("http://localhost:4567/actualizaAvatar",{params:{correo:correoUsuario,avatar:Avatar}});
-            console.log(respuesta);
         } catch (error) {
             console.log(error);
         }
@@ -82,20 +50,7 @@ function MiPerfil() {
     const atrasBtn=()=>{
         window.open("../Legendary.html","_self");
     }
-    //!METODO PARA PROCESAR LA ACTUALIZACIÓN
-    const procesarActualización=async()=>{
-        try {
-            const respuesta= await peticionActualizar();
-            abrirPopup();
-            console.log("DATA DE ACTUALIZACIÓN", respuesta.data);
-            setTimeout(() => {
-                window.open("../index.html", "_self");
-            }, 20000);
-        } catch (error) {
-            console.log(error);
-            abrirPopUpError();
-        }
-    }
+
     
 //!METODO PARA REALIZAR LA ELIMINACIÓN DEL USUARIO
     const procesarEliminacion=async()=>{
@@ -111,19 +66,31 @@ function MiPerfil() {
     const nombreUsuarioSesion=window.localStorage.getItem("Nombre");
     const apellidoUsuarioSesion=window.localStorage.getItem("Apellidos");
 
-    //!METODO PARA GUARDAR LOS CAMBIOS REALIZADOS EN EL FURMULARIO
+    //!FUNCIÓN PARA HABILITAR LOS INPUTS USANDO UN HOOK
+    const editarFormulario=()=>{
+        setHabilitaInput(false);
+    }
+
+    
     const cambiosFormulario=(evento)=>{
         // console.log(evento.target);
         const {name,value} =evento.target;
         setDatosFormulario({
             ...datosFormulario, //! SE GUARDA LA COPIA DEL VALOR DE LA VARIABLE 
             [name]: value //! Y SE HACE LA ACTUALIZACIÓN DE LOS DATOS
-            //? name y value son propiedades de los textfields abajoa
+            //? name y value son propiedades de los textfields abajo
         })
     }
-    //!FUNCIÓN PARA HABILITAR LOS INPUTS USANDO UN HOOK
-    const editarFormulario=()=>{
-        setHabilitaInput(false);
+
+    const actualizarDatos=async(evento)=>{
+    evento.preventDefault();
+    console.log("datos recuperados del formulario: ",datosFormulario);
+        try{
+            const respuesta=await axios.get("https://legendarybackend-production.up.railway.app/actualizarPerfil",{params:datosFormulario});
+            console.log(respuesta.data);
+        }catch(error){
+            console.log("Error actualizacion peticion ",error);
+        }
     }
 
     return(
@@ -135,8 +102,10 @@ function MiPerfil() {
             <div className='user_container'>
                 <h1 className='user_container_title'>Datos del Usuario</h1>
                 <div className='user_container_form'>
-                    <form action="" className='user_form' onSubmit={procesarActualización}>
-                        <select name="pais" id="pais" className='paises' onChange={cambiosFormulario} disabled={habilitaInput} placeholder='h0pa'>
+                    <form action="" className='user_form' onSubmit={actualizarDatos}>
+                        <input type="text" name="correo" id="correo" value={correoUsuario}  onChange={cambiosFormulario} className="input" disabled />
+
+                        <select name="pais" id="pais" className='paises' onChange={cambiosFormulario} disabled={habilitaInput}>
                         <option value="none" className='pais'>Pais anteior: {window.localStorage.getItem("Pais")}</option>
                         <option value="Mexico" className='pais' name='pais'>Mexico</option>
                         <option value="EU" className='pais' name='pais'>Estados Unidos</option>
@@ -144,14 +113,9 @@ function MiPerfil() {
 
                         <input type="password" name="contrasena" id="contrasena" required className='input' placeholder='Contraseña' onChange={cambiosFormulario} disabled={habilitaInput}/>
                         <input type="submit" value="Enviar" className='user_modifybtn' disabled={habilitaInput}/>
-                        <Box m={5}>
-                            {mostrarPopup&& <DatosEditados onClose={() => setMostrarPopup(false)} />}
-                        </Box>
 
-                        <Box m={5}>
-                            {mostrarErrorPopup && <DatosNoEditados onClose={() => setMostrarPopup(false)} />}
-                        </Box>
                     </form> 
+
                     <button className='user_modifybtn' onClick={editarFormulario}>Modificar Perfil</button>
                     <button className='user_container_deletebtn' onClick={procesarEliminacion}>Eliminar mi perfil</button>
                 </div>

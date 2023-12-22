@@ -22,7 +22,7 @@ function SignUp() {
     //!MÉTODO PARA HACER LA PETICIÓN AL SERVIDOR PARA INGRESAR DATOS 
     const hacerPeticion=async()=>{
         try{
-            const respuesta= await axios.post("http://localhost:4567/registro",datosFormulario);
+            const respuesta= await axios.post("https://legendarybackend-production.up.railway.app/registro",datosFormulario);
             console.log(respuesta.data);
             return respuesta.data;
         }catch(error){

@@ -100,8 +100,6 @@ cursor: pointer;
 }
 
 .user_container_avatar{
-    /* background-color: aqua; */
-    /* background-color: #c90303; */
     border-radius: 10px;
     display: flex;
     width: 40%;

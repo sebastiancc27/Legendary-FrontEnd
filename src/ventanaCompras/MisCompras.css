@@ -100,6 +100,24 @@ box-sizing: border-box;
     margin-bottom: 10px;
 }
 
+.containerInfo_titles{
+  background-color: rgb(170, 11, 11);
+  display: flex;
+  border-radius: 10px;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.containerInfo_title{
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em; 
+}
+.containerInfo_cars{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
 /* Estilos para el contenedor general */
 .containerInfo {
   background-color: rgba(0, 0, 0, 0.7); /* Un tono más oscuro de negro */
@@ -111,5 +129,7 @@ box-sizing: border-box;
 /* Estilos para las etiquetas h3 dentro del contenedor */
 .infoStyle {
   color: white; /* Rojo */
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3em; 
 }

@@ -19,7 +19,7 @@ function Legendary() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://localhost:4567/Autos");
+                const res = await axios.get("https://legendarybackend-production.up.railway.app/Autos");
                 // console.log(res.data);
                 setAutosData(res.data);
                 // console.log("Autos data: ",autosData);
@@ -34,7 +34,7 @@ function Legendary() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://localhost:4567/Motocicletas");
+                const res = await axios.get("https://legendarybackend-production.up.railway.app/Motocicletas");
                 // console.log(res.data);
                 setMotocicletaData(res.data);
                 // console.log("Autos data: ",autosData);

@@ -2,6 +2,8 @@
 import axios from 'axios'
 import './Login.css'
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
+
 function Login() {
     const [cargando, setCargando]=useState(false);
     const [datosFormulario, setDatosFormulario]=useState({
@@ -13,7 +15,7 @@ function Login() {
     //!METODO DE PETICIÓN PARA VERIFICAR REGISTRO DE USUARIO (LOGIN)
 const peticionLogin=async()=>{
         try{
-            const respuesta=await axios.post("http://localhost:4567/validacion",datosFormulario);
+            const respuesta=await axios.post("https://legendarybackend-production.up.railway.app/validacion",datosFormulario);
             console.log("Respuesta de peticion: "+respuesta);
             return respuesta;
         }catch(error){
@@ -60,7 +62,8 @@ const procesarFormulario=async(evento)=>{
                 <input type="password" className="textFieldDatos" placeholder="Contraseña" onChange={cambiosFormulario} name='contrasena'/>
                 <input type="submit" value="Iniciar Sesión" className="botonSesion" disabled={cargando}/>
              </form>
-            <a href="./SingUp.html" className="link_SingUp">Registrarme</a>
+             <Link to="/SignUp" className="link_SingUp">Registrarme</Link>
+            {/* <a href="./SingUp.html" className="link_SingUp">Registrarme</a> */}
         </div>
 
         <div className="image_login_container">

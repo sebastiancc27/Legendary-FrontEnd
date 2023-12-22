@@ -14,7 +14,7 @@ function MisCompras(props) {
 
     const obtenerListaCompras = async () => {
         try {
-            const response = await axios.get("http://localhost:4567/compras", { params: { nombreUsuario: nombreUsuario } });
+            const response = await axios.get("https://legendarybackend-production.up.railway.app/compras", { params: { nombreUsuario: nombreUsuario } });
             console.log(response.data)
             console.log(nombreUsuario)
             setCompras(response.data);
@@ -36,9 +36,19 @@ function MisCompras(props) {
             <div className='compras_container'>
                 {comprasData.map((elemento) => (
                     <div key={elemento.nombreUsuario} className="containerInfo">
-                        <h3 key={elemento.nombreAuto} className="infoStyle">Nombre Automovil: {elemento.nombreAuto}</h3>
-                        <h3 key={elemento.color} className="infoStyle">Color: {elemento.color}</h3>
-                        <h3 key={elemento.precio} className="infoStyle">Precio: {elemento.precio}</h3>
+                        <div className="containerInfo_titles">  
+                        <h3 className="containerInfo_title">Nombre del Auto</h3>
+                        <h3 className="containerInfo_title">Color del Auto</h3>
+                        <h3 className="containerInfo_title">Precio del Auto</h3>
+                        
+                        </div>
+
+                        <div className="containerInfo_cars">
+                        <h3 key={elemento.nombreAuto} className="infoStyle">{elemento.nombreAuto}</h3>
+                        <h3 key={elemento.color} className="infoStyle">{elemento.color}</h3>
+                        <h3 key={elemento.precio} className="infoStyle">{elemento.precio}</h3>
+                        </div>
+
                     </div>
                 ))}
             </div>
