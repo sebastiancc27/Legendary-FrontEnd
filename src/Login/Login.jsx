@@ -52,7 +52,6 @@ const procesarFormulario=async(evento)=>{
 
     return(
     <>
-    <div className="container">
         <div className="Login_container">
         <img src="../Imagenes/Legendary.WEBP" alt="" className="img_Legendary"/>
              <h1 className="title">Inicio de Sesión</h1>
@@ -68,9 +67,6 @@ const procesarFormulario=async(evento)=>{
 
         <div className="image_login_container">
         </div>
-
-    </div>
-
 
     </>
     );
