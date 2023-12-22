@@ -2,9 +2,11 @@
 import axios from 'axios'
 import './Login.css'
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
+    const navigate = useNavigate();
+    
     const [cargando, setCargando]=useState(false);
     const [datosFormulario, setDatosFormulario]=useState({
         correo:'',
@@ -30,7 +32,8 @@ const procesarFormulario=async(evento)=>{
         const respuesta=await peticionLogin();
         // console.log("Respuesta de LOGIN: ",respuesta.data);
         if(respuesta.data==='Usuario correcto'){
-            window.open("../Legendary.html","_self");
+            // window.open("../Legendary.html","_self");
+            navigate('/Index');
             window.localStorage.setItem('Usuario',datosFormulario.correo);
         }else{
             alert("Usuario o contraseña incorrecto");

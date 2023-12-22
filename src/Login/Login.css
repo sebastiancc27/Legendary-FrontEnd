@@ -17,6 +17,7 @@ body{
 }
 .img_Legendary{
     margin-left: 25%;
+    width: 300px;
 }
 .textFieldDatos{
     display: block;
