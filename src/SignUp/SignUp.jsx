@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './SignUp.css';
 import { Box } from '@mui/material';
 import axios from 'axios';
+import { Link} from 'react-router-dom'
+
 import UsuarioAgregado from '../Popups/usuarioAgregado';
 import ErrorAgregaUsuario from '../Popups/ErrorAgregaUsuario';
 
@@ -92,8 +94,9 @@ function SignUp() {
                 </select>
                 <input type="password" name="contrasena" id="contrasena" required placeholder="Contraseña" className='textFieldDatos' onChange={cambiosFormulario}/>
                 <input type="submit" value="Registrarme" className='botonSesion' disabled={cargando}/>
-            </form>    
-            <a href="./Login.html" className="link_SingUp">Iniciar Sesión</a>
+            </form> 
+            <Link to="/" className="link_SingUp">Iniciar Sesión</Link> 
+              
             <Box m={5}>
            { mostrarPopup && <UsuarioAgregado onClose={()=> setMostrarPopup(false)}/>}
             </Box>
