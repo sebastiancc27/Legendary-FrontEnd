@@ -21,7 +21,7 @@ body{
     margin-top: -3%;
 }
 .user_container{
-    /* margin-top: 10%; */
+    /* margin-top: 1%; */
     background-color: #420907;
     width: 80%;
     border-radius: 10px;
@@ -33,7 +33,7 @@ body{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-top: -2%;
+    margin-top: 2%;
 }
 .user_container_title{
     width: 100%;

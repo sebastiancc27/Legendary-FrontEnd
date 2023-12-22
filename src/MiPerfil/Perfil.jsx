@@ -101,7 +101,7 @@ function MiPerfil() {
     return(
         <>
         <button className='back_button' onClick={atrasBtn}>Atrás</button>
-        <div className='container'>
+        {/* <div className='container'> */}
         {/* <button className='back_button'>Atrás</button> */}
         <img src="../Imagenes/Legendary.WEBP" alt="" className='container_logo'/>
             <div className='user_container'>
@@ -126,11 +126,11 @@ function MiPerfil() {
                 </div>
 
                 <div className='user_container_avatar'>
-                    <img src="../Imagenes/usuario.png" alt="" className='user_avatar'/>
+                    <img src="../Imagenes/usuario.png" alt="imgusuario" className='user_avatar'/>
                     <h3 className='user_container_name'>{nombreUsuarioSesion+" "+apellidoUsuarioSesion}</h3>
                 </div>
             </div>
-        </div>
+        {/* </div> */}
         </>
     )
 }
