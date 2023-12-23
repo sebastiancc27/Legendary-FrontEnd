@@ -320,7 +320,7 @@ function Legendary() {
                 <h1 className='produdct_container_title'>Cars</h1>
                     {autosData.map((elemento) => (
                         <div key={elemento.nombre} className='product_card'>
-                            <img src={elemento.imagen} alt="imagenCarro" className='product_card_img' />
+                            <img src={`${elemento.imagen}`} alt="imagenCarro" className='product_card_img' />
                             <div className='product_card_info'>
                                 <h1 key={elemento.nombre} className='product_card_title'>{elemento.nombre}</h1>
                                 <button className='product_card_info_button'>${elemento.precio}.00</button>
