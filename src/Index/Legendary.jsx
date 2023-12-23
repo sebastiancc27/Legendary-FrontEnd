@@ -51,7 +51,7 @@ function Legendary() {
     //!FUNCIÓN EJECUTADA AL DARLE CLICK EN BOTON DE CERRAR SESIÓN
     const cerrarSesion = () => {
         // window.open("../index.html", "_self");
-        navigate('/Index');
+        navigate('/');
     }
     //!FUNCIÓN PARA ABRIR VENTANA DEL PERFIL DEL USUARIO
     const miPerfil = () => {
