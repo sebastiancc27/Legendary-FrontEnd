@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState } from 'react';
 import './Perfil.css'
 import { useNavigate } from 'react-router-dom'
+import Swal from "sweetalert2";
 
 
 function MiPerfil() {
@@ -61,8 +62,18 @@ function MiPerfil() {
     const procesarEliminacion=async()=>{
         try {
             const respuesta=await peticionEliminar();
+            Swal.fire({
+                title: "Eliminación Exitosa",
+                text: "El perfil se eliminó exitósamente",
+                background:"#560916",
+                color:"white",
+                imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: "Legendary MotorSport"
+              });
             console.log("RESPUESTA DE ELIMINACIÓN", respuesta.data);
-            window.open("../index.html","_self");
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
@@ -92,7 +103,20 @@ function MiPerfil() {
     console.log("datos recuperados del formulario: ",datosFormulario);
         try{
             const respuesta=await axios.get("https://legendarybackend-production.up.railway.app/actualizarPerfil",{params:datosFormulario});
-            console.log(respuesta.data);
+            console.log("Respuesta filas",respuesta.data.filas);
+            if(respuesta.data.filas){
+                Swal.fire({
+                    title: "Actualización Exitosa",
+                    text: "Deberás iniciar sesión para ver cambios",
+                    background:"#560916",
+                    color:"white",
+                    imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: "Legendary MotorSport"
+                  });
+            navigate('/');
+            }
         }catch(error){
             console.log("Error actualizacion peticion ",error);
         }

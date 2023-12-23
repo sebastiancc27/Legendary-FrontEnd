@@ -155,24 +155,26 @@ function PantallaCoche(props) {
     const procesarFormulario = async (evento) => {
         evento.preventDefault();
         console.log("Datos recuperados del formulario: ", datosCoche);
-        setCargando(true);
+        if(datosCoche.color==null){
+            Swal.fire({
+                title: "Error al realizar compra!",
+                text: "Debes seleccionar un color para tu vehiculo",
+                background:"#560916",
+                color:"white",
+                imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: "Legendary MotorSport"
+              });
+        // setCargando(false);
+            console.log("Error al realizar la compra");
+        }
+        // setCargando(true);
         try {
             const respuesta = await hacerPeticion();
-            console.log(respuesta);
-            setCargando(false);
-            if (!colorSeleccionadoo) {
-                // Si no se ha seleccionado ningún color, mostrar error
-                Swal.fire({
-                    title: "Error al realizar compra!",
-                    text: "Debes seleccionar un color para tu nuevo vehiculo",
-                    imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
-                    imageWidth: 400,
-                    imageHeight: 200,
-                    imageAlt: "Legendary MotorSport"
-                  });
-                setCargando(false);
-                return;
-            }else{
+            setCargando(true);
+            console.log("Respuesta de la petición",respuesta);
+            setCargando(true);
                 if(respuesta == 'Compra realizada') {
                     Swal.fire({
                         title: "!Compra Realizada!",
@@ -180,21 +182,24 @@ function PantallaCoche(props) {
                         imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
                         imageWidth: 400,
                         imageHeight: 200,
+                        background:"#560916",
                         imageAlt: "Legendary MotorSport"
                       });
+            // setCargando(false);
                 } else{
                     Swal.fire({
                         title: "Error al realizar compra!",
-                        text: "Hubo algún error al realizar la compra, por favor, vuelte a intenarlo",
+                        text: "Intenta de nuevo",
+                        background:"#560916",
+                        color:"white",
                         imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
                         imageWidth: 400,
                         imageHeight: 200,
                         imageAlt: "Legendary MotorSport"
                       });
-                    console.log("Error al realizar la compra");
-                    // abrirPopUpError();
                 }
-            }
+                    // abrirPopUpError();                
+
         } catch (error) {
             setCargando(false);
         }
