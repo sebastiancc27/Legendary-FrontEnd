@@ -126,7 +126,7 @@ function MiPerfil() {
                 </div>
 
                 <div className='user_container_avatar'>
-                    <img src="../Imagenes/usuario.png" alt="imgusuario" className='user_avatar'/>
+                    <img src="https://imgur.com/VttZs23" alt="imgusuario" className='user_avatar'/>
                     <h3 className='user_container_name'>{nombreUsuarioSesion+" "+apellidoUsuarioSesion}</h3>
                 </div>
             </div>
