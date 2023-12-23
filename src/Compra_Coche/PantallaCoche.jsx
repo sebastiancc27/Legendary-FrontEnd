@@ -5,7 +5,7 @@ import "./PantallaCoche.css"
 import CompraRealizada from "../Popups/CompraRealizada.jsx"
 import CompraNoRealizada from "../Popups/CompraNoRealizada.jsx"
 import { useNavigate } from 'react-router-dom'
-
+import Swal from "sweetalert2";
 
 function PantallaCoche(props) {
     const navigate = useNavigate();
@@ -162,15 +162,37 @@ function PantallaCoche(props) {
             setCargando(false);
             if (!colorSeleccionadoo) {
                 // Si no se ha seleccionado ningún color, mostrar error
-                abrirPopUpError();
+                Swal.fire({
+                    title: "Error al realizar compra!",
+                    text: "Debes seleccionar un color para tu nuevo vehiculo",
+                    imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: "Legendary MotorSport"
+                  });
                 setCargando(false);
                 return;
             }else{
                 if(respuesta == 'Compra realizada') {
-                    abrirPopup();
+                    Swal.fire({
+                        title: "!Compra Realizada!",
+                        text: "Tu nuevo vehiculo será entregado a la brevedad!!",
+                        imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
+                        imageWidth: 400,
+                        imageHeight: 200,
+                        imageAlt: "Legendary MotorSport"
+                      });
                 } else{
+                    Swal.fire({
+                        title: "Error al realizar compra!",
+                        text: "Hubo algún error al realizar la compra, por favor, vuelte a intenarlo",
+                        imageUrl: "https://static.wikia.nocookie.net/esgta/images/f/f2/Legendary_Motorsport_Actual.png/revision/latest?cb=20221231194359",
+                        imageWidth: 400,
+                        imageHeight: 200,
+                        imageAlt: "Legendary MotorSport"
+                      });
                     console.log("Error al realizar la compra");
-                    abrirPopUpError();
+                    // abrirPopUpError();
                 }
             }
         } catch (error) {
